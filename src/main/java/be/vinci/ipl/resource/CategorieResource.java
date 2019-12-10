@@ -11,7 +11,6 @@ import javax.ws.rs.core.Response;
 import com.google.gson.Gson;
 
 import be.vinci.ipl.business.Categorie;
-import be.vinci.ipl.business.Item;
 
 @Path("categories")
 public class CategorieResource {
