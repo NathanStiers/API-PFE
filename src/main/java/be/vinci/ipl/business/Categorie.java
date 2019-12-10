@@ -4,7 +4,6 @@ import java.util.List;
 
 import be.vinci.ipl.persistence.CategoriePersistence;
 import be.vinci.ipl.persistence.IPersistenceService;
-import be.vinci.ipl.persistence.ItemPersistence;
 import be.vinci.ipl.persistence.PersistenceServiceImpl;
 
 public class Categorie {

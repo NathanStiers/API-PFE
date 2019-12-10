@@ -23,7 +23,7 @@ public class CategorieResource {
 		Gson gson = new Gson();
 		Categorie c = new Categorie(); // Pas mieux de mettre ses méthodes en statique ?
 		
-		List<Item> itemsToReturn = c.get();
+		List<Categorie> itemsToReturn = c.getAllCategories();
 		
 		if(itemsToReturn != null) {
 			return  Response.status(Response.Status.OK).entity(gson.toJson(itemsToReturn)).build();
