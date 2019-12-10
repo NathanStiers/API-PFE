@@ -15,8 +15,8 @@ public class Sheet {
 	private LocalDate date;
 	private List<Item> items = new ArrayList<Item>();
 	private List<SheetItem> sheetItems = new ArrayList<SheetItem>();
-	private IPersistenceService service = new PersistenceServiceImpl();
-	private SheetPersistence sheetBack = new SheetPersistence();
+	private static IPersistenceService service = new PersistenceServiceImpl();
+	private static SheetPersistence sheetBack = new SheetPersistence();
 
 	public Sheet(int id, String user, LocalDate date) {
 		this.id = id;

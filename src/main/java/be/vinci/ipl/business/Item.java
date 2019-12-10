@@ -13,8 +13,8 @@ public class Item {
 	private String image;
 	private String name;
 	private String note;
-	private IPersistenceService service = new PersistenceServiceImpl();
-	private ItemPersistence itemBack = new ItemPersistence();
+	private static IPersistenceService service = new PersistenceServiceImpl();
+	private static ItemPersistence itemBack = new ItemPersistence();
 
 	public Item() {
 	}

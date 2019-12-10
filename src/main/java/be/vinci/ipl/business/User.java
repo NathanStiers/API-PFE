@@ -25,8 +25,8 @@ public class User {
 	private String contact_one;
 	private String contact_two;
 	private String contact_three;
-	private IPersistenceService service = new PersistenceServiceImpl();
-	private UserPersistence userBack = new UserPersistence();
+	private static IPersistenceService service = new PersistenceServiceImpl();
+	private static UserPersistence userBack = new UserPersistence();
 
 	public User(String name, String surname, String code, LocalDate birthday, String language, String dominance,
 			String schooling, String schooling_type, String schooling_level, String contact_one, String contact_two,

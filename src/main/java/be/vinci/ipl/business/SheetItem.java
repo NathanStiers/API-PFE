@@ -16,8 +16,8 @@ public class SheetItem {
 	private boolean wannaChange;
 	private boolean favorite;
 	private String comment;
-	private IPersistenceService service = new PersistenceServiceImpl();
-	private SheetItemPersistence sheetItemBack = new SheetItemPersistence();
+	private static IPersistenceService service = new PersistenceServiceImpl();
+	private static SheetItemPersistence sheetItemBack = new SheetItemPersistence();
 	/**
 	 * Initialize booleans to false // Pas plutot mieux de ne pas les initialiser du
 	 * coup ?
