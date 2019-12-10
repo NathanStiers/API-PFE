@@ -18,7 +18,7 @@ public class ItemResource {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getSheetForDate() {
+	public Response getImages() {
 		
 		Gson gson = new Gson();
 		Item i = new Item(); // Pas mieux de mettre ses méthodes en statique ?
