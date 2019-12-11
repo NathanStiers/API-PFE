@@ -42,7 +42,7 @@ public class UserResource {
 	
 	@POST
 	@Path("connection")
-	@Consumes(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response connectUser(String json) {
 		System.out.println("test connection");
