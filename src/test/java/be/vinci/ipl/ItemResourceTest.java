@@ -10,12 +10,13 @@ import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 
 import be.vinci.ipl.MyResource;
+import be.vinci.ipl.resource.ItemResource;
 
 public class ItemResourceTest extends JerseyTest {
 
 	@Override
 	protected Application configure() {
-		return new ResourceConfig(MyResource.class);
+		return new ResourceConfig(ItemResource.class);
 	}
 
 	/**
@@ -24,7 +25,6 @@ public class ItemResourceTest extends JerseyTest {
 	@Test
 	public void testImages() {
 		Response responseMsg = target().path("images").request().get();
-		Integer tmp = new Integer(5);
-		assertNotNull(tmp);
+		assertNotNull(responseMsg);
 	}
 }
