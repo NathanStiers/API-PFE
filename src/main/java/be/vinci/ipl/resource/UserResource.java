@@ -52,9 +52,9 @@ public class UserResource {
 		System.out.println(userToConnect.toString());
 		if(u.connectUser(userToConnect)) {
 			Configuration config = u.getConfig(userToConnect);
-			return Response.status(Response.Status.OK).entity(gson.toJson(config)).header("Acces-Control-Allow-Origin", "http://localhost:3000").build(); 
+			return Response.status(Response.Status.OK).entity(gson.toJson(config)).header("Access-Control-Allow-Origin", "*").build(); 
 		}else {
-			return Response.status(Response.Status.UNAUTHORIZED).header("Acces-Control-Allow-Origin", "http://localhost:3000").build();
+			return Response.status(Response.Status.UNAUTHORIZED).header("Access-Control-Allow-Origin", "*").build();
 		}
 		
 	}
