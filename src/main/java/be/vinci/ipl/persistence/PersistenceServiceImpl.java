@@ -24,7 +24,7 @@ public class PersistenceServiceImpl implements IPersistenceBackendService, IPers
 			
 		}
 
-		String url = "jdbc:postgresql://ec2-54-217-221-21.eu-west-1.compute.amazonaws.com:5432/d6r1vac3d8aagf?user=smgnrtsxjzzkks&password=be8d3cfeccc60b1e9d68156098d5bd5b0e33330c27260814a9b0e941abff4b6e&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"; 
+		String url = "jdbc:postgresql://ec2-46-137-113-157.eu-west-1.compute.amazonaws.com:5432/devnvr0qn10ecg?user=vpceiywjjzrzdv&password=c521aaa1180612f7f43e118c8a4942d1fcd898ab1087338656bd28eb4caa5afc&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"; 
 		
 		Connection conn = null;
 		try {
