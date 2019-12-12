@@ -1,0 +1,45 @@
+swagger: "2.0"
+info:
+  description: "C'est le début de la documentation Swagger de notre API concernant l'application Handic'app."
+  version: "1.0.0"
+  title: "Swagger Handic'app"
+  termsOfService: "https://www.linkedin.com/in/stiers-n-738535a6/"
+  contact:
+    email: "nathan.stiers@student.vinci.be"
+host: "pfe-api-dev.herokuapp.com"
+basePath: "/"
+tags:
+- name: "user"
+  description: "Permet la connexion et tout autre recherches sur les utilisateurs"
+schemes:
+- "https"
+- "http"
+paths:
+  /liste:
+    get:
+      tags:
+      - "user"
+      summary: "Renvoie la liste des utilisateurs"
+      description: ""
+      operationId: "addPet"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK"
+externalDocs:
+  description: "Make you tests here"
+  url: "https://pfe-api-dev.herokuapp.com/"
+definitions:
+  User:
+    type: "object"
+    properties:
+      Code:
+        type: "integer"
+        format: "int64"
+      Name:
+        type: "string"
+      Surname:
+        type: "string"
+      etc:
+        type: "string"
