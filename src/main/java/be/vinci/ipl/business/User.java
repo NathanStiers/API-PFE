@@ -43,8 +43,8 @@ public class User {
 		this.contact_one = contact_one;
 		this.contact_two = contact_two;
 		this.contact_three = contact_three;
-		this.service = new PersistenceServiceImpl();
-		this.userBack = new UserPersistence();
+		service = new PersistenceServiceImpl();
+		userBack = new UserPersistence();
 	}
 
 	public User() {
@@ -53,16 +53,16 @@ public class User {
 
 	public boolean registerUser(User u) {
 		try {
-			this.service.startTransaction();
-			this.userBack.registerUser(u);
+			service.startTransaction();
+			userBack.registerUser(u);
 
 		} catch (Exception exc) {
 			System.out.println("Error in register user : " + exc);
 			exc.printStackTrace();
-			this.service.rollbackTransaction();
+			service.rollbackTransaction();
 			return false;
 		} finally {
-			this.service.commitTransaction();
+			service.commitTransaction();
 		}
 		return true;
 
@@ -70,25 +70,50 @@ public class User {
 
 	public boolean connectUser(User u) {
 		try {
-			this.service.startTransaction();
-			if (this.userBack.connectUser(u)) {
-				return true;
-			}
-			return false;
+			service.startTransaction();
+			return userBack.connectUser(u);
 		} catch (Exception exc) {
 			System.out.println("Error in connecting user : " + exc);
 			exc.printStackTrace();
-			this.service.rollbackTransaction();
+			service.rollbackTransaction();
 			return false;
 		} finally {
-			this.service.commitTransaction();
+			service.commitTransaction();
+		}
+	}
+	
+	public boolean connectPro(User u) {
+		try {
+			service.startTransaction();
+			return userBack.connectPro(u);
+		} catch (Exception exc) {
+			System.out.println("Error in connecting pro : " + exc);
+			exc.printStackTrace();
+			service.rollbackTransaction();
+			return false;
+		} finally {
+			service.commitTransaction();
+		}
+	}
+	
+	public boolean connectContact(User u) {
+		try {
+			service.startTransaction();
+			return userBack.connectContact(u);
+		} catch (Exception exc) {
+			System.out.println("Error in connecting contact : " + exc);
+			exc.printStackTrace();
+			service.rollbackTransaction();
+			return false;
+		} finally {
+			service.commitTransaction();
 		}
 	}
 
 	public User getAllInfo(String code) {
 		try {
-			this.service.startTransaction();
-			User u = this.userBack.getAllInfo(code);
+			service.startTransaction();
+			User u = userBack.getAllInfo(code);
 			if (u != null) {
 				return u;
 			} else {
@@ -97,27 +122,27 @@ public class User {
 		} catch (Exception exc) {
 			System.out.println("Error in connecting user : " + exc);
 			exc.printStackTrace();
-			this.service.rollbackTransaction();
+			service.rollbackTransaction();
 			return null;
 		} finally {
-			this.service.commitTransaction();
+			service.commitTransaction();
 		}
 	}
 
 	public Configuration getConfig(User u) {
 		try {
-			this.service.startTransaction();
-			Configuration config = this.userBack.getConfigForUser(u);
+			service.startTransaction();
+			Configuration config = userBack.getConfigForUser(u);
 
 			return config;
 
 		} catch (Exception exc) {
 			System.out.println("Error in connecting user : " + exc);
 			exc.printStackTrace();
-			this.service.rollbackTransaction();
+			service.rollbackTransaction();
 			return null;
 		} finally {
-			this.service.commitTransaction();
+			service.commitTransaction();
 		}
 	}
 
@@ -135,8 +160,8 @@ public class User {
 
 	public List<User> getAllUser() {
 		try {
-			this.service.startTransaction();
-			List<User> list = this.userBack.getAllusers();
+			service.startTransaction();
+			List<User> list = userBack.getAllusers();
 			if (list != null) {
 				return list;
 			} else {
@@ -145,7 +170,7 @@ public class User {
 		} catch (Exception exc) {
 			System.out.println("Error in getting images : " + exc);
 			exc.printStackTrace();
-			this.service.rollbackTransaction();
+			service.rollbackTransaction();
 			return null;
 		} finally {
 			// this.service.commitTransaction();

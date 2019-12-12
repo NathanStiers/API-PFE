@@ -46,16 +46,16 @@ public class SheetItem {
 
 	public boolean updateSheetItem(SheetItem i) {
 		try {
-			this.service.startTransaction();
-			 return this.sheetItemBack.updateSheetItemById(i.getId(), i.isLoveIt(), i.isNeedHelp(), i.isWannaChange(), i.isFavorite(), i.getComment());
+			service.startTransaction();
+			 return sheetItemBack.updateSheetItemById(i.getId(), i.isLoveIt(), i.isNeedHelp(), i.isWannaChange(), i.isFavorite(), i.getComment());
 
 		} catch (Exception exc) {
 			System.out.println("Error in update sheet item: " + exc);
 			exc.printStackTrace();
-			this.service.rollbackTransaction();
+			service.rollbackTransaction();
 			return false;
 		} finally {
-			this.service.commitTransaction();
+			service.commitTransaction();
 		}
 		
 	}

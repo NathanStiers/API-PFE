@@ -12,7 +12,7 @@ public class PersistenceServiceImpl implements IPersistenceBackendService, IPers
 	private static ThreadLocal<Connection> localConnection = new ThreadLocal<Connection>();
 	
 	public PersistenceServiceImpl() {
-		this.localConnection.set(getConnection());
+		localConnection.set(getConnection());
 	}
 	
 	
@@ -102,7 +102,7 @@ public class PersistenceServiceImpl implements IPersistenceBackendService, IPers
 	@Override
 	public PreparedStatement getPreparedStatement(String query) throws SQLException {
 		
-		return this.localConnection.get().prepareStatement(query);
+		return localConnection.get().prepareStatement(query);
 	}
 	
 	

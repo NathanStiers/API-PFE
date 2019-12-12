@@ -43,8 +43,8 @@ public class Item {
 
 	public List<Item> getAllItems() {
 		try {
-			this.service.startTransaction();
-			List<Item> list = this.itemBack.getAllItems();
+			service.startTransaction();
+			List<Item> list = itemBack.getAllItems();
 			if (list != null) {
 				return list;
 			} else {
@@ -53,10 +53,10 @@ public class Item {
 		} catch (Exception exc) {
 			System.out.println("Error in getting images : " + exc);
 			exc.printStackTrace();
-			this.service.rollbackTransaction();
+			service.rollbackTransaction();
 			return null;
 		} finally {
-			this.service.commitTransaction();
+			service.commitTransaction();
 		}
 
 	}
