@@ -37,13 +37,14 @@ public class SheetItemPersistence {
 		for(SheetItem i : items) {
 			
 			try {
-				PreparedStatement ps = backend.getPreparedStatement("INSERT public.\"Sheets_items\" SET \"Love_it\"=?, \"Need_help\"=?, \"Wanna_change\"=?, \"Favorite\"=?, \"Comment\"=? WHERE \"Id\"=?");
-				ps.setBoolean(1, i.isLoveIt());
-				ps.setBoolean(2, i.isNeedHelp());
-				ps.setBoolean(3, i.isWannaChange());
-				ps.setBoolean(4, i.isFavorite());
-				ps.setString(5, i.getComment());
-				ps.setInt(6, sheetId);
+				PreparedStatement ps = backend.getPreparedStatement("INSERT INTO public.\"Sheets_items\"(\"Sheet_Id\", \"Item_id\", \"Love_it\", \"Need_help\", \"Wanna_change\", \"Favorite\", \"Comment\") VALUES(?, ?, ?, ?, ?, ?, ?)");
+				ps.setInt(1, sheetId);
+				ps.setInt(2, i.getId());
+				ps.setBoolean(3, i.isLoveIt());
+				ps.setBoolean(4, i.isNeedHelp());
+				ps.setBoolean(5, i.isWannaChange());
+				ps.setBoolean(6, i.isFavorite());
+				ps.setString(7, i.getComment());	
 				ps.execute();
 			} catch (Exception e) {
 				e.printStackTrace();
