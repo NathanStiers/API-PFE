@@ -67,12 +67,45 @@ public class UserPersistence {
 	public boolean connectUser(User u) {
 		PreparedStatement ps;
 		try {
-			ps = backend.getPreparedStatement("SELECT * FROM public.\"Users\" WHERE \"Code\" = ? AND \"Name\" = ?");
+			ps = backend.getPreparedStatement("SELECT COUNT(*) FROM public.\"Users\" WHERE \"Code\" = ? AND \"Name\" = ?");
 			ps.setString(1, u.getCode());
 			ps.setString(2, u.getName());
 			System.out.println(ps);
 			ResultSet rs = ps.executeQuery();
-			return rs != null;
+			rs.next();
+			return rs.getInt(1) == 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean connectPro(User u) {
+		PreparedStatement ps;
+		try {
+			ps = backend.getPreparedStatement("SELECT COUNT(*) FROM public.\"Professionals\" WHERE \"Code\" = ? AND \"Name\" = ?");
+			ps.setString(1, u.getCode());
+			ps.setString(2, u.getName());
+			System.out.println(ps);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			return rs.getInt(1) == 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean connectContact(User u) {
+		PreparedStatement ps;
+		try {
+			ps = backend.getPreparedStatement("SELECT COUNT(*) FROM public.\"Contact_persons\" WHERE \"Code\" = ? AND \"Name\" = ?");
+			ps.setString(1, u.getCode());
+			ps.setString(2, u.getName());
+			System.out.println(ps);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			return rs.getInt(1) == 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -115,6 +148,5 @@ public class UserPersistence {
 			return null;
 		}
 	}
-	
 
 }

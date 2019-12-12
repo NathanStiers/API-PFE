@@ -31,8 +31,8 @@ public class Categorie {
 	
 	public List<Categorie> getAllCategories() {
 		try {
-			this.service.startTransaction();
-			List<Categorie> list = this.catBack.getAllCategories();
+			service.startTransaction();
+			List<Categorie> list = catBack.getAllCategories();
 			if (list != null) {
 				return list;
 			} else {
@@ -41,10 +41,10 @@ public class Categorie {
 		} catch (Exception exc) {
 			System.out.println("Error in getting images : " + exc);
 			exc.printStackTrace();
-			this.service.rollbackTransaction();
+			service.rollbackTransaction();
 			return null;
 		} finally {
-			this.service.commitTransaction();
+			service.commitTransaction();
 		}
 
 	}

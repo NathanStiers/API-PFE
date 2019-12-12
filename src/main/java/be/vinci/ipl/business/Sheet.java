@@ -51,8 +51,8 @@ public class Sheet {
 
 	public Sheet getSheetForDate(java.sql.Date date, String code) {
 		try {
-			this.service.startTransaction();
-			Sheet sheet = this.sheetBack.getSheetForDate(date, code);
+			service.startTransaction();
+			Sheet sheet = sheetBack.getSheetForDate(date, code);
 			if (sheet != null) {
 				return sheet;
 			} else {
@@ -61,10 +61,10 @@ public class Sheet {
 		} catch (Exception exc) {
 			System.out.println("Error in connecting user : " + exc);
 			exc.printStackTrace();
-			this.service.rollbackTransaction();
+			service.rollbackTransaction();
 			return null;
 		} finally {
-			this.service.commitTransaction();
+			service.commitTransaction();
 		}
 
 	}
@@ -72,8 +72,8 @@ public class Sheet {
 	// Premier filtre
 	public Sheet getSheetForName(String name) {
 		try {
-			this.service.startTransaction();
-			Sheet sheet = this.sheetBack.getSheetForName(name);
+			service.startTransaction();
+			Sheet sheet = sheetBack.getSheetForName(name);
 			if (sheet != null) {
 				return sheet;
 			} else {
@@ -82,7 +82,7 @@ public class Sheet {
 		} catch (Exception exc) {
 			System.out.println("Error in connecting user : " + exc);
 			exc.printStackTrace();
-			this.service.rollbackTransaction();
+			service.rollbackTransaction();
 			return null;
 		} finally {
 			// this.service.commitTransaction();

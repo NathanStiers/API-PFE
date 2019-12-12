@@ -53,6 +53,12 @@ public class UserResource {
 		if(u.connectUser(userToConnect)) {
 			Configuration config = u.getConfig(userToConnect);
 			return Response.status(Response.Status.OK).entity(gson.toJson(config)).header("Access-Control-Allow-Origin", "*").build(); 
+		}else if(u.connectPro(userToConnect)) {
+			Configuration config = u.getConfig(userToConnect);
+			return Response.status(201).entity(gson.toJson(config)).header("Access-Control-Allow-Origin", "*").build(); 
+		}else if(u.connectContact(userToConnect)) {
+			Configuration config = u.getConfig(userToConnect);
+			return Response.status(202).entity(gson.toJson(config)).header("Access-Control-Allow-Origin", "*").build(); 
 		}else {
 			return Response.status(Response.Status.UNAUTHORIZED).header("Access-Control-Allow-Origin", "*").build();
 		}
