@@ -20,7 +20,6 @@ import be.vinci.ipl.business.User;
 
 
 @Path("user")
-
 public class UserResource {
 	
 	@POST

@@ -46,7 +46,7 @@ public class ItemSheetResource {
 	
 	@POST
 	@Path("endGame")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN})
 	public Response insertEndGameItems(String json) {
 		Gson gson = new Gson();
 		SheetItem si = new SheetItem();
