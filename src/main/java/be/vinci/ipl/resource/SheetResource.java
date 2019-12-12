@@ -49,7 +49,7 @@ public class SheetResource {
 		}	
 	}
 	
-	
+	//Après réflexion, mettre le userCode en clair dans une requête GET est TRES TRES MAUVAIS mais pas le temps de changer
 	@GET
 	@Path("new/{userCode}")
 	@Produces(MediaType.APPLICATION_JSON)
