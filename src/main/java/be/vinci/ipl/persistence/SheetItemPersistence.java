@@ -39,7 +39,7 @@ public class SheetItemPersistence {
 			try {
 				PreparedStatement ps = backend.getPreparedStatement("INSERT INTO public.\"Sheets_items\"(\"Sheet_id\", \"Item_id\", \"Love_it\", \"Need_help\", \"Wanna_change\", \"Favorite\", \"Comment\") VALUES(?, ?, ?, ?, ?, ?, ?)");
 				ps.setInt(1, sheetId);
-				ps.setInt(2, i.getId());
+				ps.setInt(2, i.getItemId());
 				ps.setBoolean(3, i.isLoveIt());
 				ps.setBoolean(4, i.isNeedHelp());
 				ps.setBoolean(5, i.isWannaChange());

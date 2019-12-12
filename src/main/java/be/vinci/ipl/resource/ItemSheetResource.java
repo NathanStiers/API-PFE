@@ -82,6 +82,11 @@ public class ItemSheetResource {
 			return this.sheetId;
 		}
 		
+		@Override
+		public String toString() {
+			// TODO Auto-generated method stub
+			return "id : " + this.sheetId + "liste : " + sheetItems.toString();
+		}
 		
 	}
 	
