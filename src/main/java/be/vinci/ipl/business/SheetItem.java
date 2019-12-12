@@ -2,6 +2,8 @@ package be.vinci.ipl.business;
 
 
 
+import java.util.List;
+
 import be.vinci.ipl.persistence.IPersistenceService;
 import be.vinci.ipl.persistence.PersistenceServiceImpl;
 import be.vinci.ipl.persistence.SheetItemPersistence;
@@ -57,6 +59,24 @@ public class SheetItem {
 		}
 		
 	}
+	
+	
+	public boolean insertEndGameItems(int sheetId, List<SheetItem> items) {
+		try {
+			this.service.startTransaction();
+			 return this.sheetItemBack.insertEndGameItems(sheetId, items);
+
+		} catch (Exception exc) {
+			System.out.println("Error in insertEndGameItems : " + exc);
+			exc.printStackTrace();
+			this.service.rollbackTransaction();
+			return false;
+		} finally {
+			this.service.commitTransaction();
+		}
+	}
+	
+	
 	
 	public String toString() {
 		return this.id + " " + this.comment + " " + this.favorite + " " + this.loveIt;

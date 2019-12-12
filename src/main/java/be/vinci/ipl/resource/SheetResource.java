@@ -49,4 +49,20 @@ public class SheetResource {
 		}	
 	}
 	
+	
+	@GET
+	@Path("new/{userCode}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getNewSheetForUser(@PathParam("userCode") String code) {
+		
+		Sheet s = new Sheet();
+		int toReturn = s.newSheetForUser(code);
+		if(toReturn != -1) {
+			return Response.status(Response.Status.CREATED).entity(toReturn).build();
+		}else {
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}
+		
+	}
+	
 }

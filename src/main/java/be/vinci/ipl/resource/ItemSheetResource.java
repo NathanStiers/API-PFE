@@ -1,4 +1,7 @@
 package be.vinci.ipl.resource;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -38,7 +41,46 @@ public class ItemSheetResource {
 		}else {
 			return Response.status(Response.Status.NOT_MODIFIED).build();
 		}
+				
+	}
+	
+	@POST
+	@Path("endGame")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response insertEndGameItems(String json) {
+		Gson gson = new Gson();
+		SheetItem si = new SheetItem();
 		
+		SheetAndItem requestBody = gson.fromJson(json, SheetAndItem.class);
+		System.out.println("Request body : " + requestBody.toString());
+		
+		if(si.insertEndGameItems(requestBody.getId(), requestBody.getSheetItems())) {
+			return Response.status(Response.Status.OK).build();
+		}else {
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}
+		
+		
+		
+	}
+	
+	
+	private class SheetAndItem {
+		private int sheetId;
+		private List<SheetItem> sheetItems;
+		
+		public SheetAndItem(int id) {
+			this.sheetId = id;
+			this.sheetItems = new ArrayList<SheetItem>();
+		}
+		
+		public List<SheetItem> getSheetItems(){
+			return this.sheetItems;
+		}
+		
+		public int getId() {
+			return this.sheetId;
+		}
 		
 		
 	}

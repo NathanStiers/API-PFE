@@ -48,6 +48,27 @@ public class Sheet {
 		this.user = user;
 		this.date = LocalDate.now();
 	}
+	
+	/**
+	 * 
+	 * @param user : the code PK for the user
+	 * @return the newly created sheet id
+	 */
+	public int newSheetForUser(String user) {
+		try {
+			this.service.startTransaction();
+			return this.sheetBack.insertNewSheetForUser(user);
+		} catch (Exception exc) {
+			System.out.println("Error in newSheetForUser : " + exc);
+			exc.printStackTrace();
+			this.service.rollbackTransaction();
+			
+		} finally {
+			this.service.commitTransaction();
+		}
+		return -1;
+
+	}
 
 	public Sheet getSheetForDate(java.sql.Date date, String code) {
 		try {
@@ -68,6 +89,10 @@ public class Sheet {
 		}
 
 	}
+	
+	
+	
+	
 
 	// Premier filtre
 	public Sheet getSheetForName(String name) {

@@ -1,10 +1,10 @@
 package be.vinci.ipl.persistence;
 
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-
+import java.time.LocalDate;
 
 import be.vinci.ipl.business.Item;
 import be.vinci.ipl.business.Sheet;
@@ -43,6 +43,29 @@ public class SheetPersistence {
 		}
 
 	}
+	
+	
+	public int insertNewSheetForUser(String userCode) {
+		PreparedStatement ps;
+
+		try {
+			ps = backend.getPreparedStatement(
+					"INSERT INTO public.\"Sheets\"(\"User\", \"Date\") VALUES (?, ?) RETURNING \"Id\"");
+			
+			ps.setString(1, userCode);
+			ps.setDate(2, Date.valueOf(LocalDate.now()));
+			
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			return rs.getInt(1);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;	
+	}
+	
+	
 
 	// Premier filtre
 	public Sheet getSheetForName(String name) {
